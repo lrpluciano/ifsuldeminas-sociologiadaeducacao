@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tecnologia Educacional - Temas da Atividade Avaliativa</title>
+    <title>História da Educação – Podcasts | IF SULDEMINAS</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -16,13 +16,11 @@
             --text: #333;
             --card-bg: rgba(255, 255, 255, 0.9);
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
@@ -31,7 +29,6 @@
             min-height: 100vh;
             position: relative;
         }
-
         body::before {
             content: "";
             position: fixed;
@@ -39,10 +36,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M0,100 L100,0" stroke="rgba(108, 99, 255, 0.05)" stroke-width="1"/></svg>');
+            background: url('image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M0,100 L100,0" stroke="rgba(108, 99, 255, 0.05)" stroke-width="1"/></svg>');
             z-index: -1;
         }
-
         header {
             background: var(--card-bg);
             padding: 15px 30px;
@@ -57,24 +53,21 @@
             backdrop-filter: blur(10px);
             height: 90px;
         }
-
-        .logo {
-            width: 140px;
+        /* Estilo para o logo do curso, agora o único logo */
+        .course-logo {
+            width: 150px; /* Aumentei um pouco o tamanho para preencher mais espaço */
             height: auto;
             border-radius: 8px;
             transition: transform 0.3s ease;
             max-height: 70px;
             object-fit: contain;
         }
-
-        .logo:hover {
+        .course-logo:hover {
             transform: scale(1.05);
         }
-
         .title {
             text-align: right;
         }
-
         .title h1 {
             margin: 0;
             color: var(--primary);
@@ -84,7 +77,6 @@
             display: inline-block;
             line-height: 1.2;
         }
-
         .title h1::after {
             content: "";
             position: absolute;
@@ -95,7 +87,6 @@
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             border-radius: 2px;
         }
-
         .title p {
             margin: 4px 0 0;
             color: var(--dark);
@@ -103,7 +94,6 @@
             font-size: 0.9em;
             font-weight: 500;
         }
-
         .container {
             display: flex;
             min-height: 80vh;
@@ -112,21 +102,17 @@
             max-width: 1400px;
             margin: 0 auto;
         }
-
         .timeline {
-            width: 30%;
+            width: 100%;
             background: var(--card-bg);
             padding: 20px;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.08);
             overflow-y: auto;
             max-height: calc(100vh - 150px);
-            position: sticky;
-            top: 110px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
-
         .timeline h2 {
             color: var(--dark);
             margin-bottom: 15px;
@@ -136,7 +122,6 @@
             position: relative;
             padding-bottom: 12px;
         }
-
         .timeline h2::after {
             content: "";
             position: absolute;
@@ -148,7 +133,6 @@
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             border-radius: 2px;
         }
-
         .card {
             background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
             border: 1px solid rgba(108, 99, 255, 0.1);
@@ -159,8 +143,10 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-
         .card::before {
             content: "";
             position: absolute;
@@ -171,17 +157,17 @@
             background: var(--primary);
             transition: width 0.3s ease;
         }
-
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(108, 99, 255, 0.15);
         }
-
         .card:hover::before {
             width: 100%;
             opacity: 0.1;
         }
-
+        .card-content {
+            flex: 1;
+        }
         .card h3 {
             margin: 0 0 8px 0;
             color: var(--dark);
@@ -191,7 +177,6 @@
             position: relative;
             z-index: 1;
         }
-
         .card p {
             margin: 0;
             font-size: 0.9em;
@@ -200,109 +185,23 @@
             position: relative;
             z-index: 1;
         }
-
-        .content {
-            width: 70%;
-            padding: 25px;
-            background: var(--card-bg);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            overflow-y: auto;
-            max-height: calc(100vh - 150px);
-            display: none;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .card-icon {
+            color: var(--primary);
+            font-size: 1.5em;
+            margin-left: 15px;
         }
-
-        .content.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .content h2 {
-            color: var(--dark);
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 12px;
+        .info-message {
+            background: rgba(108, 99, 255, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 15px;
             margin-bottom: 20px;
-            font-size: 1.8em;
-            font-weight: 600;
-            position: relative;
+            border-radius: 0 10px 10px 0;
         }
-
-        .content h2::after {
-            content: "";
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 80px;
-            height: 2px;
-            background: var(--secondary);
-            border-radius: 2px;
+        .info-message p {
+            margin: 0;
+            color: var(--dark);
+            font-size: 0.95em;
         }
-
-        .content h3 {
-            color: var(--primary);
-            margin: 25px 0 12px;
-            font-size: 1.3em;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-        }
-
-        .content h3 i {
-            margin-right: 8px;
-            font-size: 0.85em;
-        }
-
-        .content p {
-            margin: 12px 0;
-            font-size: 1em;
-            line-height: 1.6;
-        }
-
-        .content ul, .content ol {
-            margin: 12px 0 15px;
-            padding-left: 20px;
-        }
-
-        .content li {
-            margin-bottom: 8px;
-            font-size: 1em;
-            line-height: 1.5;
-        }
-
-        .content a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .content a::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary);
-            transition: width 0.3s ease;
-        }
-
-        .content a:hover {
-            color: var(--secondary);
-        }
-
-        .content a:hover::after {
-            width: 100%;
-        }
-
         footer {
             background: var(--dark);
             color: white;
@@ -312,7 +211,6 @@
             margin-top: 20px;
             position: relative;
         }
-
         footer::before {
             content: "";
             position: absolute;
@@ -322,341 +220,15 @@
             height: 4px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
-
         footer p {
             margin: 0;
         }
-
-        /* Estilos para os quizzes */
-        .quiz-selector {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .quiz-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
-            border: 1px solid rgba(108, 99, 255, 0.1);
-            border-radius: 15px;
-            padding: 15px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        .quiz-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.15);
-        }
-
-        .quiz-card i {
-            font-size: 2em;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .quiz-card h3 {
-            color: var(--dark);
-            margin-bottom: 5px;
-            font-size: 1.1em;
-        }
-
-        .quiz-card p {
-            color: #666;
-            font-size: 0.9em;
-        }
-
-        /* Modal do Quiz */
-        .quiz-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            overflow-y: auto;
-        }
-
-        .quiz-modal.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .quiz-modal-content {
-            background: var(--card-bg);
-            border-radius: 20px;
-            width: 90%;
-            max-width: 800px;
-            max-height: 90vh;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .quiz-modal-header {
-            padding: 20px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .quiz-modal-header h3 {
-            margin: 0;
-            font-size: 1.5em;
-        }
-
-        .quiz-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5em;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .quiz-close:hover {
-            transform: rotate(90deg);
-        }
-
-        .quiz-modal-body {
-            flex: 1;
-            overflow-y: auto;
-            padding: 0;
-        }
-
-        .quiz-progress {
-            padding: 15px 20px;
-            background: rgba(108, 99, 255, 0.1);
-            border-bottom: 1px solid rgba(108, 99, 255, 0.2);
-        }
-
-        .quiz-progress-bar {
-            height: 8px;
-            background: rgba(108, 99, 255, 0.2);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .quiz-progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 4px;
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        .quiz-question-container {
-            padding: 20px;
-        }
-
-        .quiz-question {
-            margin-bottom: 20px;
-        }
-
-        .quiz-question h4 {
-            color: var(--dark);
-            margin-bottom: 15px;
-            font-size: 1.1em;
-            line-height: 1.4;
-        }
-
-        .quiz-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-
-        .quiz-option {
-            padding: 12px 15px;
-            background: white;
-            border: 1px solid rgba(108, 99, 255, 0.2);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.95em;
-            line-height: 1.4;
-        }
-
-        .quiz-option:hover {
-            background: rgba(108, 99, 255, 0.1);
-            border-color: var(--primary);
-        }
-
-        .quiz-option.selected {
-            background: rgba(108, 99, 255, 0.2);
-            border-color: var(--primary);
-            font-weight: 500;
-        }
-
-        .quiz-modal-footer {
-            padding: 15px 20px;
-            border-top: 1px solid rgba(108, 99, 255, 0.2);
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .quiz-buttons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn {
-            padding: 10px 20px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn:hover {
-            background: var(--secondary);
-            transform: translateY(-2px);
-        }
-
-        .btn-secondary {
-            background: var(--dark);
-        }
-
-        .btn-secondary:hover {
-            background: #1a1f3a;
-        }
-
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .btn:disabled:hover {
-            background: var(--primary);
-            transform: none;
-        }
-
-        /* Resultados do Quiz */
-        .quiz-results {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .quiz-results h3 {
-            color: var(--dark);
-            margin-bottom: 20px;
-            font-size: 1.8em;
-        }
-
-        .quiz-score {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 20px 0;
-        }
-
-        .score-item {
-            text-align: center;
-        }
-
-        .score-item .number {
-            font-size: 3em;
-            font-weight: 700;
-            line-height: 1;
-        }
-
-        .score-item.correct .number {
-            color: var(--accent);
-        }
-
-        .score-item.incorrect .number {
-            color: var(--secondary);
-        }
-
-        .score-item .label {
-            font-size: 1em;
-            color: var(--dark);
-            margin-top: 5px;
-        }
-
-        .quiz-percentage {
-            font-size: 2.5em;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 10px 0;
-        }
-
-        .quiz-questions-review {
-            margin-top: 30px;
-            text-align: left;
-        }
-
-        .review-question {
-            margin-bottom: 25px;
-            padding: 15px;
-            background: rgba(108, 99, 255, 0.05);
-            border-radius: 10px;
-            border-left: 4px solid var(--primary);
-        }
-
-        .review-question h4 {
-            color: var(--dark);
-            margin-bottom: 15px;
-            font-size: 1.1em;
-        }
-
-        .review-options {
-            margin-bottom: 15px;
-        }
-
-        .review-option {
-            padding: 10px 15px;
-            margin-bottom: 8px;
-            border-radius: 8px;
-            font-size: 0.95em;
-        }
-
-        .review-option.user-answer {
-            background: rgba(255, 101, 132, 0.1);
-            border-left: 3px solid var(--secondary);
-        }
-
-        .review-option.correct-answer {
-            background: rgba(78, 205, 196, 0.1);
-            border-left: 3px solid var(--accent);
-        }
-
-        .review-status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 500;
-        }
-
-        .review-status.correct {
-            color: var(--accent);
-        }
-
-        .review-status.incorrect {
-            color: var(--secondary);
-        }
-
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
                 padding: 15px;
                 gap: 15px;
             }
-
             .timeline {
                 width: 100%;
                 padding: 15px;
@@ -664,25 +236,6 @@
                 top: 0;
                 max-height: none;
             }
-
-            .content {
-                width: 100%;
-                padding: 15px;
-                max-height: none;
-            }
-
-            .content h2 {
-                font-size: 1.5em;
-            }
-
-            .content h3 {
-                font-size: 1.2em;
-            }
-
-            .content p, .content li {
-                font-size: 0.95em;
-            }
-
             header {
                 flex-direction: column;
                 padding: 15px;
@@ -690,951 +243,124 @@
                 height: auto;
                 min-height: 120px;
             }
-
+            .course-logo {
+                max-height: 60px; /* Reduz um pouco o tamanho no mobile */
+            }
             .title {
                 text-align: center;
                 margin-top: 10px;
             }
-
             .title h1 {
                 font-size: 1.6em;
             }
-
-            .quiz-options {
-                grid-template-columns: 1fr;
-            }
-
-            .quiz-selector {
-                grid-template-columns: 1fr;
-            }
-
-            .quiz-modal-content {
-                width: 95%;
-                max-height: 95vh;
-            }
-
-            .quiz-score {
-                flex-direction: column;
-                gap: 15px;
-            }
         }
-
-        /* Scrollbar styling */
         ::-webkit-scrollbar {
             width: 6px;
         }
-
         ::-webkit-scrollbar-track {
             background: rgba(0, 0, 0, 0.05);
             border-radius: 10px;
         }
-
         ::-webkit-scrollbar-thumb {
             background: linear-gradient(180deg, var(--primary), var(--secondary));
             border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, var(--secondary), var(--accent));
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="https://i.ibb.co/Xfs7CvCC/LOGO-PERA.png" alt="Logo Pera" class="logo">
+        <!-- Apenas o logo do curso permanece -->
+        <img src="https://i.ibb.co/Xfs7CvCC/LOGO-PERA.png" alt="Logo do Curso de Pedagogia" class="course-logo">
         <div class="title">
-            <h1>Tecnologia Educacional</h1>
-            <p>Temas da Atividade Avaliativa</p>
+            <h1>História da Educação</h1>
+            <p>Podcasts por Unidade – Curso de Pedagogia</p>
         </div>
     </header>
 
     <div class="container">
         <nav class="timeline">
-            <h2><i class="fas fa-list-ul"></i> Conteúdos</h2>
-            <div class="card" onclick="showContent(1)">
-                <h3>Tema 1: A escola no contexto da Sociedade da Informação e do Conhecimento</h3>
-                <p>Explore como escolas guiam alunos na era digital.</p>
+            <h2><i class="fas fa-podcast"></i> Unidades</h2>
+            
+            <div class="info-message">
+                <p><i class="fas fa-info-circle"></i> Clique em qualquer unidade para acessar o podcast no Google Drive, onde você poderá ouvir ou baixar o arquivo.</p>
             </div>
-            <div class="card" onclick="showContent(2)">
-                <h3>Tema 2: A cibercultura e as novas formas de aprender e ensinar</h3>
-                <p>Descubra como a internet transforma a educação.</p>
-            </div>
-            <div class="card" onclick="showContent(3)">
-                <h3>Tema 3: As TDICs e os processos de ensino-aprendizagem</h3>
-                <p>Entendida como tecnologias ampliam o aprendizado.</p>
-            </div>
-            <div class="card" onclick="showContent(4)">
-                <h3>Tema 4: Metodologias ativas e tecnologias digitais</h3>
-                <p>Veja como as aulas lideram sua própria aprendizagem.</p>
-            </div>
-            <div class="card" onclick="showContent(5)">
-                <h3>Tema 5: Políticas públicas para TDICs na educação</h3>
-                <p>Conheça iniciativas para tornar a educação digital acessível.</p>
-            </div>
-            <div class="card" onclick="showContent(6)">
-                <h3>Tema 6: Formação de professores e TDICs</h3>
-                <p>Aprenda como professores se preparam para a era digital.</p>
-            </div>
-            <div class="card" onclick="showContent(7)">
-                <h3>Tema 7: TDICs como ferramentas de aprendizagem</h3>
-                <p>Explore ferramentas que tornam o estudo mais dinâmico.</p>
-            </div>
-            <div class="card" onclick="showContent(8)">
-                <h3>Tema 8: Práticas pedagógicas mediadas por tecnologia</h3>
-                <p>Descubra como tech torna aulas mais interativas.</p>
-            </div>
-            <div class="card" onclick="showContent(9)">
-                <h3>Síntese Final</h3>
-                <p>Resumo dos temas e o futuro da educação digital.</p>
-            </div>
-            <div class="card" onclick="showContent(10)">
-                <h3><i class="fas fa-clipboard-check"></i> Avaliações e Quizzes</h3>
-                <p>Estude para a prova de Tecnologia Educacional com nossos quizzes interativos. </p>
-            </div>
+            
+            <a href="https://drive.google.com/file/d/1m2ByDCMDRUNV8t4m0fUoINxjEDkWrr8T/view?usp=sharing" target="_blank" class="card-link">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Unidade 01</h3>
+                        <p>Introdução à História da Educação</p>
+                    </div>
+                    <div class="card-icon">
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1CFlBxZvRR8GYy0tW1TAZgBCjm2ybtwaT/view?usp=sharing" target="_blank" class="card-link">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Unidade 02</h3>
+                        <p>Educação na Antiguidade</p>
+                    </div>
+                    <div class="card-icon">
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1QVwVqWawGdlks6dagPD4hX1XQoY0Eo4B/view?usp=sharing" target="_blank" class="card-link">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Unidade 03</h3>
+                        <p>Educação na Idade Média</p>
+                    </div>
+                    <div class="card-icon">
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1buSHM1mtoFlshotG_c7sk9c7_-81nWwR/view?usp=sharing" target="_blank" class="card-link">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Unidade 04</h3>
+                        <p>Renascimento e Reforma</p>
+                    </div>
+                    <div class="card-icon">
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1aKvb8HfN9m8SIBDu3WUlPexTyNkGJZz9/view?usp=sharing" target="_blank" class="card-link">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Unidade 05</h3>
+                        <p>Iluminismo e Escola Moderna</p>
+                    </div>
+                    <div class="card-icon">
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="https://drive.google.com/file/d/1xR93QXjxmGPbHaqzPreWYzijK_tGQjTv/view?usp=sharing" target="_blank" class="card-link">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>Unidade 06</h3>
+                        <p>Educação no Brasil: Séculos XIX–XX</p>
+                    </div>
+                    <div class="card-icon">
+                        <i class="fas fa-external-link-alt"></i>
+                    </div>
+                </div>
+            </a>
         </nav>
-
-        <main class="content" id="content-1">
-            <h2>Tema 1: A escola no contexto da Sociedade da Informação e do Conhecimento</h2>
-            <h3><i class="fas fa-compass"></i> Introdução ao tema</h3>
-            <p>Imagine a informação como um rio fluindo rapidamente, cheio de dados de todos os cantos do mundo. A escola, hoje, é como um guia que te ajuda a navegar esse rio, ensinando não só a encontrar conhecimento, mas a usá-lo de forma crítica e criativa. Na Sociedade da Informação e do Conhecimento, onde as tecnologias digitais dominam a produção e o acesso à informação, a escola não é mais a única fonte de saber. Ela se reinventa para você se preparar para aprender sempre, colaborando e pensando criticamente. <strong>Atividade: Liste três formas de como você usa a internet para aprender algo novo.</strong></p>
-            
-            <h3><i class="fas fa-brain"></i> Conceitos chave</h3>
-            <ul>
-                <li><strong>Sociedade da Informação</strong>: Um mundo onde a informação é o maior recurso, como o petróleo na economia digital.</li>
-                <li><strong>Sociedade do Conhecimento</strong>: Vai além da informação, focando em transformá-la em algo útil,como aprender a cozinhar com um vídeo do YouTube.</li>
-                <li><strong>Escola como espaço de mediação</strong>: A escola organiza e filtra informações, ajudando você a entender o que é confiável, como um bibliotecário digital.</li>
-                <li><strong>Multiletramentos</strong>: Habilidade de "ler" e criar em várias mídias, como entender um meme, escrever um e-mail ou gravar um vídeo.</li>
-                <li><strong>Aprendizagem ao longo da vida</strong>: Continue aprendendo sempre, mesmo após a escola, como fazer um curso online aos 40 anos.</li>
-                <li><strong>Inclusão digital</strong>: Garantir que todos, independentemente de onde vivem, tenham acesso a dispositivos e internet.</li>
-            </ul>
-            
-            <h3><i class="fas fa-balance-scale"></i> Impactos e desafios</h3>
-            <p><strong>Benefícios:</strong></p>
-            <ul>
-                <li>Acesso a um mundo de informações, como passeios virtuais por museus globais.</li>
-                <li>Autonomia para aprender no seu ritmo, como pausar um vídeo de química.</li>
-                <li>Personalização, com aulas adaptadas ao seu estilo de aprendizagem.</li>
-                <li>Conexão global, permitindo colaborar com estudantes de outros países.</li>
-            </ul>
-            
-            <p><strong>Desafios:</strong></p>
-            <ul>
-                <li>Desigualdade de acesso: nem têm internet rápida ou computadores.</li>
-                <li>Sobrecarga informacional: como escolher entre milhares de postagens no Instagram?</li>
-                <li>Resistência à mudança: algumas escolas conhecem métodos tradicionais.</li>
-            </ul>
-            
-            <p><strong>Aspectos éticos:</strong></p>
-            <ul>
-                <li>Proteger seus dados pessoais online, como senhas ou fotos.</li>
-                <li>Usar a tecnologia de forma responsável, sem espalhar fake news.</li>
-                <li>Combater a desinformação verificando fontes antes de compartilhar.</li>
-            </ul>
-            
-            <h3><i class="fas fa-school"></i> Exemplos práticos</h3>
-            <ul>
-                <li>Projeto "Escola Conectada" traz Wi-Fi para escolas públicas.</li>
-                <li>Criando uma apresentação colaborativa no Google Slides.</li>
-                <li>Usando a Khan Academy para reforçar matemática.</li>
-                <li>Feiras de conhecimento digital, como exibir projetos em realidade aumentada.</li>
-            </ul>
-            
-            <h3><i class="fas fa-question-circle"></i> Perguntas com respostas</h3>
-            <ol>
-                <li><strong>Como formar cidadãos críticos?</strong> Ensinando a analisar fontes, usar letramento digital e metodologias como ABP (Aprendizagem Baseada em Problemas).</li>
-                <li><strong>Quais competências são essenciais?</strong> Pensamento crítico, alfabetização digital, colaboração e autonomia.</li>
-                <li><strong>Como a exclusão digital afeta a educação?</strong> Limita o acesso a recursos, ampliando desigualdades.</li>
-                <li><strong>A escola deve competir ou colaborar com outras fontes?</strong> Colaborar, integrando mídias como YouTube ao currículo.</li>
-                <li><strong>Como equilibrar inovação e tradição?</strong> Usando tecnologia com propósito, mantendo valores como respeito e diálogo.</li>
-                <li><strong>Como você decide quais fontes online são independentes?</strong> Compare duas notícias sobre um mesmo tema e lista o que torna uma confiança.</li>
-            </ol>
-            
-            <h3><i class="fas fa-book"></i> Referências sugeridas</h3>
-            <ul>
-                <li>LÉVY, Pierre. <em>Cibercultura</em> (1999) – Explora como a cultura digital molda nossas vidas.</li>
-                <li>CASTELLS, Manuel. <em>A sociedade em rede</em> (1999) – Mostra como a internet conecta o mundo.</li>
-                <li>MORAN, José. <em>A educação que desejamos</em> (2007) – Propõe uma educação mais dinâmica e conectada.</li>
-                <li><a href="https://periodicos.ufes.br/kirikere/article/view/46326" target="_blank">Artigo: Tecnologias Digitais de Informação e Comunicação na educação e inovação</a> – Discute como a tecnologia transforma a escola.</li>
-            </ul>
-        </main>
-
-        <!-- Conteúdo dos outros temas (2-9) permanece inalterado -->
-        <!-- Mantive apenas o conteúdo do tema 1 como exemplo para economizar espaço -->
-
-        <main class="content" id="content-10">
-            <h2><i class="fas fa-clipboard-check"></i> Avaliações e Quizzes</h2>
-            <p>Teste seu conhecimento sobre Tecnologia Educacional com nossos quizzes interativos. Selecione um dos quizzes abaixo para começar:</p>
-            
-            <div class="quiz-selector">
-                <div class="quiz-card" onclick="startQuiz('exam1')">
-                    <i class="fas fa-file-alt"></i>
-                    <h3>Exame 1</h3>
-                    <p>10 questões sobre conceitos fundamentais</p>
-                </div>
-                <div class="quiz-card" onclick="startQuiz('exam2')">
-                    <i class="fas fa-file-alt"></i>
-                    <h3>Exame 2</h3>
-                    <p>10 questões sobre transformação educacional</p>
-                </div>
-                <div class="quiz-card" onclick="startQuiz('exam3')">
-                    <i class="fas fa-file-alt"></i>
-                    <h3>Exame 3</h3>
-                    <p>9 questões sobre práticas pedagógicas</p>
-                </div>
-                <div class="quiz-card" onclick="startQuiz('practical')">
-                    <i class="fas fa-tasks"></i>
-                    <h3>Teste Prático</h3>
-                    <p>10 questões sobre aplicações práticas</p>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <!-- Modal do Quiz -->
-    <div id="quiz-modal" class="quiz-modal">
-        <div class="quiz-modal-content">
-            <div class="quiz-modal-header">
-                <h3 id="quiz-title">Quiz</h3>
-                <button class="quiz-close" onclick="closeQuiz()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            
-            <div class="quiz-progress">
-                <div class="quiz-progress-bar">
-                    <div id="quiz-progress-fill" class="quiz-progress-fill"></div>
-                </div>
-            </div>
-            
-            <div class="quiz-modal-body">
-                <div id="quiz-content" class="quiz-question-container">
-                    <!-- O conteúdo do quiz será carregado aqui dinamicamente -->
-                </div>
-            </div>
-            
-            <div class="quiz-modal-footer">
-                <div class="quiz-buttons">
-                    <button id="quiz-prev-btn" class="btn btn-secondary" onclick="previousQuestion()" disabled>
-                        <i class="fas fa-arrow-left"></i> Anterior
-                    </button>
-                    <button id="quiz-next-btn" class="btn" onclick="nextQuestion()">
-                        <i class="fas fa-arrow-right"></i> Próxima
-                    </button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <footer>
-        <p>© 2025 Power Treinamento. Todos os direitos reservados.</p>
+        <p>© 2025 IF SULDEMINAS – Curso de Pedagogia. Todos os direitos reservados.</p>
     </footer>
-
-    <script>
-        // Dados dos quizzes
-        const quizData = {
-            exam1: {
-                title: "Exame 1",
-                questions: [
-                    {
-                        question: "Qual afirmação descreve melhor o conceito de 'tecnologia' na educação?",
-                        options: [
-                            "Tecnologia refere-se apenas a dispositivos digitais usados em salas de aula.",
-                            "Tecnologia está relacionada exclusivamente à ciência da computação.",
-                            "Tecnologia significa ensinar os alunos a usar software.",
-                            "A tecnologia é um processo contínuo que molda a vida humana e melhora o aprendizado.",
-                            "A tecnologia é desnecessária na prática pedagógica moderna."
-                        ],
-                        correct: 3
-                    },
-                    {
-                        question: "Qual fator é mais crucial para a integração eficaz das TIC na escola de acordo com o currículo?",
-                        options: [
-                            "Computadores atualizados.",
-                            "Conexão rápida à internet.",
-                            "Formação de professores e inclusão crítica de tecnologias na pedagogia.",
-                            "Parcerias comerciais.",
-                            "Interesse dos alunos em mídias sociais."
-                        ],
-                        correct: 2
-                    },
-                    {
-                        question: "O que distingue as 'tecnologias físicas' das 'tecnologias simbólicas'?",
-                        options: [
-                            "Ambos são controlados por software.",
-                            "As tecnologias físicas se referem a objetos; as simbólicas se referem a sistemas de comunicação.",
-                            "Simbólico é hardware; físico é cultural.",
-                            "Físico é apenas digital.",
-                            "Não há distinção."
-                        ],
-                        correct: 1
-                    },
-                    {
-                        question: "Um dos principais desafios para os professores em relação ao uso da tecnologia nas escolas é:",
-                        options: [
-                            "Falta de engajamento dos alunos.",
-                            "Uso excessivo da internet.",
-                            "Resistência a métodos não digitais.",
-                            "Formação insuficiente dos professores sobre o uso pedagógico.",
-                            "Não há acesso a celulares."
-                        ],
-                        correct: 3
-                    },
-                    {
-                        question: "O que não é considerado um objetivo principal para a inserção das TIC na educação?",
-                        options: [
-                            "Criar novas formas de interação pedagógica.",
-                            "Apoiar a memorização mecânica.",
-                            "Incentivar a criatividade e o pensamento crítico.",
-                            "Facilitar a inclusão digital.",
-                            "Transformar ambientes de aprendizagem."
-                        ],
-                        correct: 1
-                    },
-                    {
-                        question: "Em relação ao uso da mídia na educação, o que é recomendado?",
-                        options: [
-                            "Integrar equipamentos e processos reflexivos na aprendizagem.",
-                            "Foco somente em equipamentos técnicos.",
-                            "Proibir as redes sociais nas salas de aula.",
-                            "Use apenas mídias tradicionais, como livros.",
-                            "Prefira recursos em papel aos digitais."
-                        ],
-                        correct: 0
-                    },
-                    {
-                        question: "De acordo com o currículo, quem é o principal agente no processo tecnológico?",
-                        options: [
-                            "Estudantes.",
-                            "Professores.",
-                            "Administradores escolares.",
-                            "Seres humanos em contextos educacionais.",
-                            "Computadores."
-                        ],
-                        correct: 3
-                    },
-                    {
-                        question: "Qual é uma prática recomendada ao aplicar tecnologia digital em sala de aula?",
-                        options: [
-                            "Usar a tecnologia para simplesmente replicar métodos existentes.",
-                            "Integrar novas metodologias que transformem o ensino e a aprendizagem.",
-                            "Concentre-se apenas em habilidades técnicas.",
-                            "Ignorar o feedback dos alunos.",
-                            "Proibir dispositivos na escola."
-                        ],
-                        correct: 1
-                    },
-                    {
-                        question: "O que as políticas educacionais no Brasil enfatizam em relação ao uso da tecnologia?",
-                        options: [
-                            "Investimento exclusivo em dispositivos.",
-                            "Limitar o acesso à internet.",
-                            "Proibição da informática.",
-                            "Foco apenas em infraestrutura.",
-                            "Formação de professores para aplicação pedagógica significativa."
-                        ],
-                        correct: 4
-                    },
-                    {
-                        question: "O conceito de 'inclusão digital' abrange:",
-                        options: [
-                            "Ensinar os alunos a usar as mídias sociais.",
-                            "Garantir que todas as partes interessadas na educação possam acessar e se beneficiar dos recursos digitais.",
-                            "Limitar a tecnologia para alunos mais jovens.",
-                            "Bloqueio de sites não educacionais.",
-                            "Evitar colaboração em projetos de TIC."
-                        ],
-                        correct: 1
-                    }
-                ]
-            },
-            exam2: {
-                title: "Exame 2",
-                questions: [
-                    {
-                        question: "Qual é a principal transformação esperada com a adoção de TIC nas escolas?",
-                        options: [
-                            "Substituir os livros didáticos apenas por tablets.",
-                            "Mudança profunda nas metodologias e relações de ensino.",
-                            "Reduzir as responsabilidades dos professores.",
-                            "Currículos mais rígidos.",
-                            "Padronizar o trabalho dos alunos."
-                        ],
-                        correct: 1
-                    },
-                    {
-                        question: "De acordo com as diretrizes curriculares, o conforto do professor com a tecnologia significa:",
-                        options: [
-                            "Dominar apenas equipamentos básicos.",
-                            "Ignorar novas ferramentas educacionais.",
-                            "Delegar todo o trabalho técnico à equipe de TI.",
-                            "Evitar plataformas digitais.",
-                            "Ser capaz de avaliar e inovar com recursos digitais."
-                        ],
-                        correct: 4
-                    },
-                    {
-                        question: "O que NÃO é uma característica de ambientes de aprendizagem digital eficazes?",
-                        options: [
-                            "Interatividade e múltiplas formas de comunicação.",
-                            "Navegação flexível e integração de informações.",
-                            "Adaptabilidade cultural.",
-                            "Sistemas fechados, não conectados em rede.",
-                            "Oportunidades de colaboração."
-                        ],
-                        correct: 3
-                    },
-                    {
-                        question: "Na avaliação de políticas de TIC, qual indicador é crucial?",
-                        options: [
-                            "Número de computadores por aluno.",
-                            "Somente frequência estudantil.",
-                            "Idade dos edifícios escolares.",
-                            "Instalações esportivas.",
-                            "Nível de qualificação do professor para uso das TIC."
-                        ],
-                        correct: 4
-                    },
-                    {
-                        question: "O currículo destaca que o uso bem-sucedido da tecnologia na educação depende de:",
-                        options: [
-                            "Apenas ter equipamento avançado.",
-                            "Limitar o acesso à internet.",
-                            "Métodos de ensino uniformes.",
-                            "Engajamento do professor, reflexão e desenvolvimento profissional contínuo.",
-                            "Reduzir o tempo de aula."
-                        ],
-                        correct: 3
-                    },
-                    {
-                        question: "Qual o papel da avaliação de projetos na adoção de tecnologia?",
-                        options: [
-                            "Verificar apenas especificações técnicas.",
-                            "Monitoramento dos impactos no ensino e na aprendizagem.",
-                            "Calculando apenas o custo.",
-                            "Priorizar hardware em detrimento de recursos humanos.",
-                            "Evitar a coleta de feedback."
-                        ],
-                        correct: 1
-                    },
-                    {
-                        question: "Qual estratégia pedagógica aumenta a eficácia da tecnologia?",
-                        options: [
-                            "Incentivar tarefas de aprendizagem colaborativas e criativas.",
-                            "Isolar a tecnologia do currículo.",
-                            "Atribuição de exercícios repetitivos.",
-                            "Retirar a autonomia do aluno.",
-                            "Padronizar a entrega de conteúdo."
-                        ],
-                        correct: 0
-                    },
-                    {
-                        question: "A que se refere 'alfabetização digital'?",
-                        options: [
-                            "Saber apenas operar dispositivos.",
-                            "Memorizar peças de computador.",
-                            "Utilizar recursos obsoletos.",
-                            "Confiar apenas em tutoriais.",
-                            "Uso crítico e criativo de tecnologias digitais em diversos contextos."
-                        ],
-                        correct: 4
-                    },
-                    {
-                        question: "Para a formação de professores em TIC, o que é recomendado?",
-                        options: [
-                            "Somente workshops curtos e esporádicos.",
-                            "Desenvolvimento integrado e contínuo alinhado às necessidades pedagógicas.",
-                            "Evitar intercâmbio profissional.",
-                            "Somente trabalho individual.",
-                            "Evento de treinamento único."
-                        ],
-                        correct: 1
-                    },
-                    {
-                        question: "No contexto das políticas públicas brasileiras, o que continua sendo um desafio?",
-                        options: [
-                            "Acesso universal à formação tecnológica de qualidade para professores.",
-                            "Uso excessivo de tecnologia.",
-                            "Excesso de recursos digitais.",
-                            "Falta de dispositivos estudantis.",
-                            "Foco no ensino analógico."
-                        ],
-                        correct: 0
-                    }
-                ]
-            },
-            exam3: {
-                title: "Exame 3",
-                questions: [
-                    {
-                        question: "O que melhor resume o papel da mídia na mudança educacional?",
-                        options: [
-                            "Proporcionar entretenimento aos alunos.",
-                            "Permitir novas formas de aprendizagem interativa e participativa.",
-                            "Controlar as opiniões dos alunos.",
-                            "Substituição de professores em sala de aula.",
-                            "Concentrar-se apenas em materiais visuais."
-                        ],
-                        correct: 1
-                    },
-                    {
-                        question: "Por que simplesmente instalar computadores nas escolas não é suficiente para transformar a educação?",
-                        options: [
-                            "Não garante melhores práticas pedagógicas.",
-                            "Resolve todos os problemas de aprendizagem.",
-                            "Elimina a necessidade de formação de professores.",
-                            "Aumenta o absenteísmo.",
-                            "Automatiza o design curricular."
-                        ],
-                        correct: 0
-                    },
-                    {
-                        question: "O que é uma tecnologia simbólica?",
-                        options: [
-                            "Somente hardware de computador.",
-                            "Sistemas e interfaces de comunicação, potencializando a construção do conhecimento.",
-                            "Anotações manuscritas.",
-                            "Dispositivos físicos.",
-                            "Mídia não educacional."
-                        ],
-                        correct: 1
-                    },
-                    {
-                        question: "Qual recurso é vital em ambientes educacionais online?",
-                        options: [
-                            "Sobrecarga de informação.",
-                            "Documentos estáticos e imutáveis.",
-                            "Usabilidade e fácil navegação.",
-                            "Comunicação unidirecional.",
-                            "Excluindo vozes de estudantes."
-                        ],
-                        correct: 2
-                    },
-                    {
-                        question: "Na avaliação formativa de projetos de TIC, qual aspecto é crucial?",
-                        options: [
-                            "Número de licenças adquiridas.",
-                            "Duração das aulas.",
-                            "Ferramentas de avaliação uniformes.",
-                            "Engajamento dos alunos e trabalho colaborativo.",
-                            "Proibir certas tecnologias."
-                        ],
-                        correct: 3
-                    },
-                    {
-                        question: "Qual conceito está associado ao 'professor como inovador'?",
-                        options: [
-                            "Projetar atividades que integrem a tecnologia de forma significativa e reflexiva.",
-                            "Utilizando apenas materiais digitais pré-fabricados.",
-                            "Limitar a escolha do aluno.",
-                            "Evitar tecnologia em projetos.",
-                            "Confiar exclusivamente em livros didáticos."
-                        ],
-                        correct: 0
-                    },
-                    {
-                        question: "O que é um 'ambiente de aprendizagem inclusivo'?",
-                        options: [
-                            "Exclui alunos com necessidades especiais.",
-                            "Depende apenas do ensino presencial.",
-                            "Evita a diversidade.",
-                            "Uma que garanta acesso igualitário às ferramentas digitais e promova a participação.",
-                            "Limita a interação digital."
-                        ],
-                        correct: 3
-                    },
-                    {
-                        question: "Por que a reflexão do professor é importante na adoção de tecnologia?",
-                        options: [
-                            "Evitar toda tecnologia.",
-                            "Incentivar a aprendizagem rígida.",
-                            "Identificar e superar potenciais desafios para a inovação pedagógica.",
-                            "Para manutenção de registros administrativos.",
-                            "Somente para aulas de uniforme."
-                        ],
-                        correct: 2
-                    },
-                    {
-                        question: "O que uma política de inclusão digital deve priorizar?",
-                        options: [
-                            "Equipamento limitador.",
-                            "Restringir o acesso a especialistas.",
-                            "Memorização mecânica de procedimentos.",
-                            "Foco apenas em escolas urbanas.",
-                            "Empoderamento de professores e alunos no uso e criação de recursos digitais."
-                        ],
-                        correct: 4
-                    }
-                ]
-            },
-            practical: {
-                title: "Teste Prático",
-                questions: [
-                    {
-                        question: "O que melhor descreve as 'metodologias ativas' mencionadas no currículo?",
-                        options: [
-                            "Escuta passiva de palestras.",
-                            "Memorizar definições.",
-                            "Somente demonstrações conduzidas por professores.",
-                            "Evitar conteúdo digital.",
-                            "Experiências de aprendizagem centradas no aluno usando tecnologia para engajamento."
-                        ],
-                        correct: 4
-                    },
-                    {
-                        question: "Um professor quer apresentar um novo software educacional aos seus alunos. Qual é o melhor passo inicial?",
-                        options: [
-                            "Demonstrar a ferramenta e promover a exploração ativa.",
-                            "Atribuir leitura de um manual.",
-                            "Excluir os alunos da tomada de decisões.",
-                            "Evite ferramentas digitais em sala de aula.",
-                            "Proibir a colaboração entre pares."
-                        ],
-                        correct: 0
-                    },
-                    {
-                        question: "Durante um projeto em sala de aula, os alunos utilizam fóruns online. Como isso poderia aprimorar o aprendizado?",
-                        options: [
-                            "Limita a comunicação.",
-                            "Isola os membros do grupo.",
-                            "Concentra-se em tarefas rotineiras.",
-                            "Promove a discussão colaborativa e o pensamento crítico.",
-                            "Aumenta o controle do professor."
-                        ],
-                        correct: 3
-                    },
-                    {
-                        question: "Ao planejar atividades de inclusão digital, o professor deve:",
-                        options: [
-                            "Concentre-se apenas em alunos avançados.",
-                            "Garantir que todos os alunos tenham oportunidades e recursos iguais.",
-                            "Ignorar o contexto da comunidade.",
-                            "Utilizar a tecnologia apenas para prática técnica.",
-                            "Escolha exclusivamente dispositivos caros."
-                        ],
-                        correct: 1
-                    },
-                    {
-                        question: "O principal objetivo do ensino reflexivo com tecnologia é:",
-                        options: [
-                            "Para manter a tradição.",
-                            "Concentrar-se em atividades repetitivas.",
-                            "Adaptar e integrar melhor os recursos digitais para a aprendizagem.",
-                            "Evitar novas abordagens pedagógicas.",
-                            "Delegar tecnologia somente à equipe de TI."
-                        ],
-                        correct: 2
-                    },
-                    {
-                        question: "Selecionar um software para uso em sala de aula de acordo com o currículo envolve:",
-                        options: [
-                            "Confiar na popularidade.",
-                            "Avaliar sua relevância pedagógica e usabilidade.",
-                            "Foco no entretenimento.",
-                            "Escolher com base apenas no preço.",
-                            "Seleção aleatória."
-                        ],
-                        correct: 1
-                    },
-                    {
-                        question: "Os professores que enfrentam resistência à tecnologia devem:",
-                        options: [
-                            "Incentivar o diálogo e evidenciar seus benefícios nos processos pedagógicos.",
-                            "Aplicar o uso obrigatório.",
-                            "Ignorar o feedback dos colegas.",
-                            "Restringir o acesso.",
-                            "Evite treinamento."
-                        ],
-                        correct: 0
-                    },
-                    {
-                        question: "O currículo defende o uso das TIC para:",
-                        options: [
-                            "Entrega passiva de informações.",
-                            "Estimular a aprendizagem crítica, autônoma e participativa.",
-                            "Apenas memorização.",
-                            "Entretenimento.",
-                            "Ensino autoritário."
-                        ],
-                        correct: 1
-                    },
-                    {
-                        question: "Ao avaliar a inclusão tecnológica de uma escola, qual resultado é mais importante?",
-                        options: [
-                            "Número de dispositivos.",
-                            "Velocidade do Wi-Fi.",
-                            "Uniformidade de ferramentas.",
-                            "Melhor envolvimento dos alunos e resultados de aprendizagem.",
-                            "Reduzir a autonomia dos professores."
-                        ],
-                        correct: 3
-                    },
-                    {
-                        question: "Para metodologias combinadas (híbridas), o princípio é:",
-                        options: [
-                            "Combinar estratégias presenciais e online para o envolvimento dos alunos.",
-                            "Utilizando apenas métodos online.",
-                            "Ignorar atividades presenciais.",
-                            "Evitar trabalho em grupo.",
-                            "Concentração em palestras."
-                        ],
-                        correct: 0
-                    },
-                    {
-                        question: "O papel do professor em salas de aula integradas à tecnologia é:",
-                        options: [
-                            "Autoridade única.",
-                            "Somente supervisor técnico.",
-                            "Estranho.",
-                            "Observador.",
-                            "Facilitador e co-aprendiz, orientando a exploração do aluno e a construção do conhecimento."
-                        ],
-                        correct: 4
-                    }
-                ]
-            }
-        };
-
-        let currentQuiz = null;
-        let currentQuestion = 0;
-        let userAnswers = [];
-        let quizCompleted = false;
-
-        function showContent(id) {
-            const content = document.querySelectorAll('.content');
-            content.forEach(content => content.classList.remove('active'));
-            
-            const selectedContent = document.getElementById('content-' + id);
-            if (selectedContent) {
-                selectedContent.classList.add('active');
-                selectedContent.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-        
-        window.onload = function() {
-            showContent(1);
-        };
-
-        function startQuiz(quizType) {
-            currentQuiz = quizType;
-            currentQuestion = 0;
-            userAnswers = [];
-            quizCompleted = false;
-            
-            const modal = document.getElementById('quiz-modal');
-            const title = document.getElementById('quiz-title');
-            const content = document.getElementById('quiz-content');
-            
-            title.textContent = quizData[quizType].title;
-            modal.classList.add('active');
-            
-            showQuestion();
-        }
-
-        function closeQuiz() {
-            const modal = document.getElementById('quiz-modal');
-            modal.classList.remove('active');
-            
-            // Resetar variáveis
-            currentQuiz = null;
-            currentQuestion = 0;
-            userAnswers = [];
-            quizCompleted = false;
-        }
-
-        function showQuestion() {
-            const quiz = quizData[currentQuiz];
-            const content = document.getElementById('quiz-content');
-            const progressFill = document.getElementById('quiz-progress-fill');
-            const prevBtn = document.getElementById('quiz-prev-btn');
-            const nextBtn = document.getElementById('quiz-next-btn');
-            
-            if (currentQuestion >= quiz.questions.length) {
-                showResults();
-                return;
-            }
-            
-            const question = quiz.questions[currentQuestion];
-            const progress = ((currentQuestion + 1) / quiz.questions.length) * 100;
-            
-            progressFill.style.width = progress + '%';
-            
-            let questionHTML = `
-                <div class="quiz-question">
-                    <h4>${question.question}</h4>
-                    <div class="quiz-options">
-            `;
-            
-            question.options.forEach((option, index) => {
-                const isSelected = userAnswers[currentQuestion] === index ? 'selected' : '';
-                questionHTML += `<div class="quiz-option ${isSelected}" onclick="selectOption(${index})">${option}</div>`;
-            });
-            
-            questionHTML += `
-                    </div>
-                </div>
-            `;
-            
-            content.innerHTML = questionHTML;
-            
-            // Atualizar botões
-            prevBtn.disabled = currentQuestion === 0;
-            nextBtn.innerHTML = currentQuestion === quiz.questions.length - 1 ? 
-                '<i class="fas fa-check"></i> Finalizar' : 
-                '<i class="fas fa-arrow-right"></i> Próxima';
-        }
-
-        function selectOption(optionIndex) {
-            userAnswers[currentQuestion] = optionIndex;
-            
-            const options = document.querySelectorAll('.quiz-option');
-            options.forEach((option, index) => {
-                if (index === optionIndex) {
-                    option.classList.add('selected');
-                } else {
-                    option.classList.remove('selected');
-                }
-            });
-        }
-
-        function nextQuestion() {
-            if (userAnswers[currentQuestion] === undefined) {
-                // Feedback visual para resposta não selecionada
-                const options = document.querySelectorAll('.quiz-option');
-                options.forEach(option => {
-                    option.style.animation = 'shake 0.5s';
-                    setTimeout(() => {
-                        option.style.animation = '';
-                    }, 500);
-                });
-                return;
-            }
-            
-            currentQuestion++;
-            showQuestion();
-        }
-
-        function previousQuestion() {
-            if (currentQuestion > 0) {
-                currentQuestion--;
-                showQuestion();
-            }
-        }
-
-        function showResults() {
-            const quiz = quizData[currentQuiz];
-            const content = document.getElementById('quiz-content');
-            const prevBtn = document.getElementById('quiz-prev-btn');
-            const nextBtn = document.getElementById('quiz-next-btn');
-            
-            let correctCount = 0;
-            
-            // Calcular respostas corretas
-            quiz.questions.forEach((question, index) => {
-                if (userAnswers[index] === question.correct) {
-                    correctCount++;
-                }
-            });
-            
-            const incorrectCount = quiz.questions.length - correctCount;
-            const percentage = Math.round((correctCount / quiz.questions.length) * 100);
-            
-            let resultsHTML = `
-                <div class="quiz-results">
-                    <h3>Resultados do ${quiz.title}</h3>
-                    <div class="quiz-score">
-                        <div class="score-item correct">
-                            <div class="number">${correctCount}</div>
-                            <div class="label">Acertos</div>
-                        </div>
-                        <div class="score-item incorrect">
-                            <div class="number">${incorrectCount}</div>
-                            <div class="label">Erros</div>
-                        </div>
-                    </div>
-                    <div class="quiz-percentage">${percentage}%</div>
-                    <p>Desempenho: ${percentage >= 70 ? 'Excelente!' : percentage >= 50 ? 'Bom!' : 'Pode melhorar!'}</p>
-                </div>
-                <div class="quiz-questions-review">
-                    <h4>Revisão das Questões</h4>
-            `;
-            
-            // Mostrar revisão das questões
-            quiz.questions.forEach((question, index) => {
-                const userAnswer = userAnswers[index];
-                const isCorrect = userAnswer === question.correct;
-                
-                resultsHTML += `
-                    <div class="review-question">
-                        <h4>Questão ${index + 1}</h4>
-                        <p><strong>${question.question}</strong></p>
-                        <div class="review-options">
-                            <div class="review-option user-answer">
-                                <strong>Sua resposta:</strong> ${question.options[userAnswer]}
-                            </div>
-                            <div class="review-option correct-answer">
-                                <strong>Resposta correta:</strong> ${question.options[question.correct]}
-                            </div>
-                        </div>
-                        <div class="review-status ${isCorrect ? 'correct' : 'incorrect'}">
-                            <i class="fas fa-${isCorrect ? 'check-circle' : 'times-circle'}"></i>
-                            ${isCorrect ? 'Resposta correta' : 'Resposta incorreta'}
-                        </div>
-                    </div>
-                `;
-            });
-            
-            resultsHTML += `</div>`;
-            
-            content.innerHTML = resultsHTML;
-            
-            // Atualizar botões
-            prevBtn.style.display = 'none';
-            nextBtn.innerHTML = '<i class="fas fa-redo"></i> Refazer Quiz';
-            nextBtn.onclick = restartQuiz;
-            
-            // Adicionar botão para fechar
-            const footer = document.querySelector('.quiz-modal-footer');
-            if (!document.getElementById('close-quiz-btn')) {
-                const closeBtn = document.createElement('button');
-                closeBtn.id = 'close-quiz-btn';
-                closeBtn.className = 'btn btn-secondary';
-                closeBtn.innerHTML = '<i class="fas fa-times"></i> Fechar';
-                closeBtn.onclick = closeQuiz;
-                footer.appendChild(closeBtn);
-            }
-        }
-
-        function restartQuiz() {
-            currentQuestion = 0;
-            userAnswers = [];
-            quizCompleted = false;
-            
-            // Resetar botões
-            const prevBtn = document.getElementById('quiz-prev-btn');
-            const nextBtn = document.getElementById('quiz-next-btn');
-            const closeBtn = document.getElementById('close-quiz-btn');
-            
-            prevBtn.style.display = 'block';
-            nextBtn.innerHTML = '<i class="fas fa-arrow-right"></i> Próxima';
-            nextBtn.onclick = nextQuestion;
-            
-            if (closeBtn) {
-                closeBtn.remove();
-            }
-            
-            showQuestion();
-        }
-
-        // Adicionar animação shake para feedback visual
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes shake {
-                0%, 100% { transform: translateX(0); }
-                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-                20%, 40%, 60%, 80% { transform: translateX(5px); }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
 </body>
 </html>
