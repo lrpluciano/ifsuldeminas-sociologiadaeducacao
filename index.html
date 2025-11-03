@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Revisão da disciplina História da Educação com Podcast | IF SULDEMINAS</title>
+    <title>Sociologia da Educação | IFsuldeMinas – Polo Bragança</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -15,6 +15,8 @@
             --light: #F7F9FB;
             --text: #333;
             --card-bg: rgba(255, 255, 255, 0.9);
+            --completed-bg: #e8f5e9; /* Cor de fundo para item concluído */
+            --completed-color: #2e7d32; /* Cor do texto/ícone para concluído */
         }
         * {
             margin: 0;
@@ -53,20 +55,21 @@
             backdrop-filter: blur(10px);
             height: 90px;
         }
-        /* Estilo para o logo do curso, agora o único logo */
-        .course-logo {
-            width: 150px; /* Aumentei um pouco o tamanho para preencher mais espaço */
+        .logo-left, .logo-right {
+            width: 140px;
             height: auto;
             border-radius: 8px;
             transition: transform 0.3s ease;
             max-height: 70px;
             object-fit: contain;
         }
-        .course-logo:hover {
+        .logo-left:hover, .logo-right:hover {
             transform: scale(1.05);
         }
         .title {
-            text-align: right;
+            text-align: center;
+            flex: 1;
+            padding: 0 20px;
         }
         .title h1 {
             margin: 0;
@@ -133,21 +136,17 @@
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             border-radius: 2px;
         }
-        .card {
+        .week-card {
             background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
             border: 1px solid rgba(108, 99, 255, 0.1);
             border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 15px;
-            cursor: pointer;
+            padding: 20px;
+            margin-bottom: 20px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
-        .card::before {
+        .week-card::before {
             content: "";
             position: absolute;
             top: 0;
@@ -157,39 +156,119 @@
             background: var(--primary);
             transition: width 0.3s ease;
         }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.15);
+        .week-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            cursor: pointer;
         }
-        .card:hover::before {
-            width: 100%;
-            opacity: 0.1;
-        }
-        .card-content {
-            flex: 1;
-        }
-        .card h3 {
-            margin: 0 0 8px 0;
+        .week-header h3 {
+            margin: 0;
             color: var(--dark);
-            font-size: 1em;
+            font-size: 1.2em;
             font-weight: 600;
             line-height: 1.4;
             position: relative;
             z-index: 1;
         }
-        .card p {
-            margin: 0;
-            font-size: 0.9em;
-            color: #666;
-            line-height: 1.4;
-            position: relative;
-            z-index: 1;
-        }
-        .card-icon {
+        .week-header .toggle-icon {
             color: var(--primary);
-            font-size: 1.5em;
-            margin-left: 15px;
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
         }
+        .week-header.active .toggle-icon {
+            transform: rotate(180deg);
+        }
+        .resources {
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .resources.active {
+            display: grid;
+        }
+        .resource-card {
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(108, 99, 255, 0.1);
+            position: relative; /* Necessário para posicionar o check */
+        }
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.1);
+        }
+        .resource-card i {
+            font-size: 2em;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        .resource-card h4 {
+            margin: 0 0 5px;
+            color: var(--dark);
+            font-size: 1em;
+            font-weight: 600;
+        }
+        .resource-card p {
+            margin: 0;
+            font-size: 0.8em;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .resource-card a {
+            display: inline-block;
+            padding: 8px 15px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .resource-card a:hover {
+            background: var(--secondary);
+            transform: scale(1.05);
+        }
+        .resource-card.disabled {
+            opacity: 0.6;
+        }
+        .resource-card.disabled a {
+            background: #999;
+            cursor: not-allowed;
+        }
+
+        /* --- ESTILOS PARA O ITEM CONCLUÍDO --- */
+        .resource-card.completed {
+            background-color: var(--completed-bg);
+            border-color: var(--completed-color);
+        }
+        .resource-card.completed i {
+            color: var(--completed-color);
+        }
+        .resource-card.completed a {
+            background-color: var(--completed-color);
+            cursor: default;
+            pointer-events: none; /* Impede novos cliques */
+        }
+        .resource-card.completed a:hover {
+            transform: none;
+        }
+        .resource-card.completed .check-mark {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: var(--completed-color);
+            font-size: 1.5em;
+        }
+
         .info-message {
             background: rgba(108, 99, 255, 0.1);
             border-left: 4px solid var(--primary);
@@ -243,8 +322,8 @@
                 height: auto;
                 min-height: 120px;
             }
-            .course-logo {
-                max-height: 60px; /* Reduz um pouco o tamanho no mobile */
+            .logo-left, .logo-right {
+                max-height: 60px;
             }
             .title {
                 text-align: center;
@@ -252,6 +331,9 @@
             }
             .title h1 {
                 font-size: 1.6em;
+            }
+            .resources {
+                grid-template-columns: 1fr;
             }
         }
         ::-webkit-scrollbar {
@@ -269,122 +351,284 @@
 </head>
 <body>
     <header>
-        <!-- Apenas o logo do curso permanece -->
-        <img src="https://i.ibb.co/Xfs7CvCC/LOGO-PERA.png" alt="Logo do Curso de Pedagogia" class="course-logo">
+        <img src="https://i.ibb.co/4ZS8Qtx4/Logo.png" alt="Logo do Curso" class="logo-left">
         <div class="title">
-            <h1>Revisão da disciplina História da Educação</h1>
-            <p>Podcasts por Unidade – Curso de Pedagogia</p>
+            <h1>Sociologia da Educação</h1>
+            <p>Material de estudo – Pedagogia | IFsuldeMinas – Polo Bragança</p>
         </div>
+        <img src="https://muz.ifsuldeminas.edu.br/edfisica/images/8_Congresso/realizao-IF-Muz-1.png" alt="Logo IF SULDEMINAS - Campus Muzambinho" class="logo-right">
     </header>
 
     <div class="container">
         <nav class="timeline">
-            <h2><i class="fas fa-podcast"></i> Unidades</h2>
+            <h2><i class="fas fa-calendar-alt"></i> Semanas de Estudo</h2>
             
             <div class="info-message">
-                <p><i class="fas fa-info-circle"></i> Clique em qualquer unidade para acessar o podcast no Google Drive, onde você poderá ouvir ou baixar o arquivo.</p>
+                <p><i class="fas fa-info-circle"></i> Clique em cada semana para acessar os materiais. Seu progresso é salvo automaticamente!</p>
             </div>
             
-            <a href="https://drive.google.com/file/d/1m2ByDCMDRUNV8t4m0fUoINxjEDkWrr8T/view?usp=drive_link" target="_blank" class="card-link">
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Unidade 01</h3>
-                        <p>Introdução à História da Educação</p>
+            <!-- Semana 01 -->
+            <div class="week-card">
+                <div class="week-header" onclick="toggleWeek(1)">
+                    <h3>Semana 01</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="resources" id="week-1">
+                    <div class="resource-card" id="week-1-resumo">
+                        <i class="fas fa-file-alt"></i>
+                        <h4>Resumo</h4>
+                        <p>Material de apoio com os principais conceitos</p>
+                        <a href="https://drive.google.com/file/d/1SomoVNFiVZiC81fC5zdJVIQ4lIqM05eA/view?usp=drive_link" target="_blank" onclick="markAsCompleted('week-1-resumo')">Acessar</a>
                     </div>
-                    <div class="card-icon">
-                        <i class="fas fa-external-link-alt"></i>
+                    <div class="resource-card" id="week-1-podcast">
+                        <i class="fas fa-podcast"></i>
+                        <h4>Podcast</h4>
+                        <p>Áudio com discussão sobre o tema da semana</p>
+                        <a href="https://drive.google.com/file/d/1UQGgvRWTnbTy8mHCT1Oeamf2ZrBvl-fa/view?usp=drive_link" target="_blank" onclick="markAsCompleted('week-1-podcast')">Ouvir</a>
+                    </div>
+                    <div class="resource-card" id="week-1-video">
+                        <i class="fas fa-video"></i>
+                        <h4>Vídeo</h4>
+                        <p>Vídeo explicativo com exemplos práticos</p>
+                        <a href="https://drive.google.com/file/d/1MBETZ3yLGPNIn1vHSVhE4TC-d6HyePD1/view?usp=drive_link" target="_blank" onclick="markAsCompleted('week-1-video')">Assistir</a>
+                    </div>
+                    <div class="resource-card" id="week-1-quiz">
+                        <i class="fas fa-question-circle"></i>
+                        <h4>Quiz</h4>
+                        <p>Teste seus conhecimentos sobre o conteúdo</p>
+                        <a href="https://gemini.google.com/share/78214e3325ba" target="_blank" onclick="markAsCompleted('week-1-quiz')">Responder</a>
                     </div>
                 </div>
-            </a>
+            </div>
             
-            <a href="https://drive.google.com/file/d/1CFlBxZvRR8GYy0tW1TAZgBCjm2ybtwaT/view?usp=drive_link" target="_blank" class="card-link">
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Unidade 02</h3>
-                        <p>Educação na Antiguidade</p>
+            <!-- Semana 02 -->
+            <div class="week-card">
+                <div class="week-header" onclick="toggleWeek(2)">
+                    <h3>Semana 02</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="resources" id="week-2">
+                    <div class="resource-card" id="week-2-resumo">
+                        <i class="fas fa-file-alt"></i>
+                        <h4>Resumo</h4>
+                        <p>Material de apoio com os principais conceitos</p>
+                        <a href="https://drive.google.com/file/d/1kRJvTZF2CdAGrIRGF5D0UMepG-rZT_qY/view?usp=drive_link" target="_blank" onclick="markAsCompleted('week-2-resumo')">Acessar</a>
                     </div>
-                    <div class="card-icon">
-                        <i class="fas fa-external-link-alt"></i>
+                    <div class="resource-card" id="week-2-podcast">
+                        <i class="fas fa-podcast"></i>
+                        <h4>Podcast</h4>
+                        <p>Áudio com discussão sobre o tema da semana</p>
+                        <a href="https://drive.google.com/file/d/1r_tMmXELfJIHRfKoD2okMzDl7TAqqOM3/view?usp=drive_link" target="_blank" onclick="markAsCompleted('week-2-podcast')">Ouvir</a>
+                    </div>
+                    <div class="resource-card" id="week-2-video">
+                        <i class="fas fa-video"></i>
+                        <h4>Vídeo</h4>
+                        <p>Vídeo explicativo com exemplos práticos</p>
+                        <a href="https://drive.google.com/file/d/1LAQdZkgmQXMOWyJPTD174ATiDRvESLXi/view?usp=drive_link" target="_blank" onclick="markAsCompleted('week-2-video')">Assistir</a>
+                    </div>
+                    <div class="resource-card" id="week-2-quiz">
+                        <i class="fas fa-question-circle"></i>
+                        <h4>Quiz</h4>
+                        <p>Teste seus conhecimentos sobre o conteúdo</p>
+                        <a href="https://gemini.google.com/share/e5cbb951184d" target="_blank" onclick="markAsCompleted('week-2-quiz')">Responder</a>
                     </div>
                 </div>
-            </a>
+            </div>
             
-            <a href="https://drive.google.com/file/d/1QVwVqWawGdlks6dagPD4hX1XQoY0Eo4B/view?usp=drive_link" target="_blank" class="card-link">
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Unidade 03</h3>
-                        <p>Educação na Idade Média</p>
+            <!-- Semana 03 -->
+            <div class="week-card">
+                <div class="week-header" onclick="toggleWeek(3)">
+                    <h3>Semana 03</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="resources" id="week-3">
+                    <div class="resource-card" id="week-3-resumo">
+                        <i class="fas fa-file-alt"></i>
+                        <h4>Resumo</h4>
+                        <p>Material de apoio com os principais conceitos</p>
+                        <a href="https://drive.google.com/file/d/1UIVgzaBh0XP7oCotKnOVI_eezxwGFCNN/view?usp=drive_link" target="_blank" onclick="markAsCompleted('week-3-resumo')">Acessar</a>
                     </div>
-                    <div class="card-icon">
-                        <i class="fas fa-external-link-alt"></i>
+                    <div class="resource-card" id="week-3-podcast">
+                        <i class="fas fa-podcast"></i>
+                        <h4>Podcast</h4>
+                        <p>Áudio com discussão sobre o tema da semana</p>
+                        <a href="https://drive.google.com/file/d/1fJJ-ggcujimzLXveGu0IboIGEd_-ot5n/view?usp=drive_link" target="_blank" onclick="markAsCompleted('week-3-podcast')">Ouvir</a>
+                    </div>
+                    <div class="resource-card" id="week-3-video">
+                        <i class="fas fa-video"></i>
+                        <h4>Vídeo</h4>
+                        <p>Vídeo explicativo com exemplos práticos</p>
+                        <a href="https://drive.google.com/file/d/1ZzC5Ye5bJ4Y9z8LYMSsi9mlUBrcRPgNS/view?usp=drive_link" target="_blank" onclick="markAsCompleted('week-3-video')">Assistir</a>
+                    </div>
+                    <div class="resource-card" id="week-3-quiz">
+                        <i class="fas fa-question-circle"></i>
+                        <h4>Quiz</h4>
+                        <p>Teste seus conhecimentos sobre o conteúdo</p>
+                        <a href="https://gemini.google.com/share/b60c37d3574b" target="_blank" onclick="markAsCompleted('week-3-quiz')">Responder</a>
                     </div>
                 </div>
-            </a>
+            </div>
             
-            <a href="https://drive.google.com/file/d/1dJE2invRR6_m7kPO1DhPLfVVVazVnHPQ/view?usp=drive_link" target="_blank" class="card-link">
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Unidade 04</h3>
-                        <p>Renascimento e Reforma</p>
+            <!-- Semana 04 -->
+            <div class="week-card">
+                <div class="week-header" onclick="toggleWeek(4)">
+                    <h3>Semana 04</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="resources" id="week-4">
+                    <div class="resource-card disabled" id="week-4-resumo">
+                        <i class="fas fa-file-alt"></i>
+                        <h4>Resumo</h4>
+                        <p>Material de apoio com os principais conceitos</p>
+                        <a href="#" onclick="event.preventDefault()">Em breve</a>
                     </div>
-                    <div class="card-icon">
-                        <i class="fas fa-external-link-alt"></i>
+                    <div class="resource-card disabled" id="week-4-podcast">
+                        <i class="fas fa-podcast"></i>
+                        <h4>Podcast</h4>
+                        <p>Áudio com discussão sobre o tema da semana</p>
+                        <a href="#" onclick="event.preventDefault()">Em breve</a>
+                    </div>
+                    <div class="resource-card disabled" id="week-4-video">
+                        <i class="fas fa-video"></i>
+                        <h4>Vídeo</h4>
+                        <p>Vídeo explicativo com exemplos práticos</p>
+                        <a href="#" onclick="event.preventDefault()">Em breve</a>
+                    </div>
+                    <div class="resource-card disabled" id="week-4-quiz">
+                        <i class="fas fa-question-circle"></i>
+                        <h4>Quiz</h4>
+                        <p>Teste seus conhecimentos sobre o conteúdo</p>
+                        <a href="#" onclick="event.preventDefault()">Em breve</a>
                     </div>
                 </div>
-            </a>
+            </div>
             
-            <a href="https://drive.google.com/file/d/16zu933EgTarUjhpt8a-X3rTKArryHNox/view?usp=drive_link" target="_blank" class="card-link">
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Unidade 05</h3>
-                        <p>Iluminismo e Escola Moderna</p>
+            <!-- Semana 05 -->
+            <div class="week-card">
+                <div class="week-header" onclick="toggleWeek(5)">
+                    <h3>Semana 05</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="resources" id="week-5">
+                    <div class="resource-card disabled" id="week-5-resumo">
+                        <i class="fas fa-file-alt"></i>
+                        <h4>Resumo</h4>
+                        <p>Material de apoio com os principais conceitos</p>
+                        <a href="#" onclick="event.preventDefault()">Em breve</a>
                     </div>
-                    <div class="card-icon">
-                        <i class="fas fa-external-link-alt"></i>
+                    <div class="resource-card disabled" id="week-5-podcast">
+                        <i class="fas fa-podcast"></i>
+                        <h4>Podcast</h4>
+                        <p>Áudio com discussão sobre o tema da semana</p>
+                        <a href="#" onclick="event.preventDefault()">Em breve</a>
+                    </div>
+                    <div class="resource-card disabled" id="week-5-video">
+                        <i class="fas fa-video"></i>
+                        <h4>Vídeo</h4>
+                        <p>Vídeo explicativo com exemplos práticos</p>
+                        <a href="#" onclick="event.preventDefault()">Em breve</a>
+                    </div>
+                    <div class="resource-card disabled" id="week-5-quiz">
+                        <i class="fas fa-question-circle"></i>
+                        <h4>Quiz</h4>
+                        <p>Teste seus conhecimentos sobre o conteúdo</p>
+                        <a href="#" onclick="event.preventDefault()">Em breve</a>
                     </div>
                 </div>
-            </a>
+            </div>
             
-            <a href="https://drive.google.com/file/d/1aR1DatWOsxBKXb2KSzn_zfYd7Sv5cStw/view?usp=drive_link" target="_blank" class="card-link">
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Unidade 06</h3>
-                        <p>Educação no Brasil: Séculos XIX–XX</p>
+            <!-- Semana 06 -->
+            <div class="week-card">
+                <div class="week-header" onclick="toggleWeek(6)">
+                    <h3>Semana 06</h3>
+                    <i class="fas fa-chevron-down toggle-icon"></i>
+                </div>
+                <div class="resources" id="week-6">
+                    <div class="resource-card disabled" id="week-6-resumo">
+                        <i class="fas fa-file-alt"></i>
+                        <h4>Resumo</h4>
+                        <p>Material de apoio com os principais conceitos</p>
+                        <a href="#" onclick="event.preventDefault()">Em breve</a>
                     </div>
-                    <div class="card-icon">
-                        <i class="fas fa-external-link-alt"></i>
+                    <div class="resource-card disabled" id="week-6-podcast">
+                        <i class="fas fa-podcast"></i>
+                        <h4>Podcast</h4>
+                        <p>Áudio com discussão sobre o tema da semana</p>
+                        <a href="#" onclick="event.preventDefault()">Em breve</a>
+                    </div>
+                    <div class="resource-card disabled" id="week-6-video">
+                        <i class="fas fa-video"></i>
+                        <h4>Vídeo</h4>
+                        <p>Vídeo explicativo com exemplos práticos</p>
+                        <a href="#" onclick="event.preventDefault()">Em breve</a>
+                    </div>
+                    <div class="resource-card disabled" id="week-6-quiz">
+                        <i class="fas fa-question-circle"></i>
+                        <h4>Quiz</h4>
+                        <p>Teste seus conhecimentos sobre o conteúdo</p>
+                        <a href="#" onclick="event.preventDefault()">Em breve</a>
                     </div>
                 </div>
-            </a>
-            
-            <a href="https://drive.google.com/file/d/1IoAfhDUqfxuezbzGFMmECFrvIq50f5-X/view?usp=drive_link" target="_blank" class="card-link">
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Unidade 07</h3>
-                        <p>Educação Contemporânea</p>
-                    </div>
-                    <div class="card-icon">
-                        <i class="fas fa-external-link-alt"></i>
-                    </div>
-                </div>
-            </a>
-            
-            <a href="https://drive.google.com/file/d/1jr4l81JROiWAh2Gkuj83e52dHQ2WSg16/view?usp=drive_link" target="_blank" class="card-link">
-                <div class="card">
-                    <div class="card-content">
-                        <h3>Unidade 08</h3>
-                        <p>Tendências Pedagógicas Atuais</p>
-                    </div>
-                    <div class="card-icon">
-                        <i class="fas fa-external-link-alt"></i>
-                    </div>
-                </div>
-            </a>
+            </div>
         </nav>
     </div>
 
     <footer>
         <p>© 2025 IF SULDEMINAS – Curso de Pedagogia. Todos os direitos reservados.</p>
     </footer>
+
+    <script>
+        function toggleWeek(weekNumber) {
+            const weekHeader = document.querySelector(`#week-${weekNumber}`).previousElementSibling;
+            const resources = document.getElementById(`week-${weekNumber}`);
+            
+            weekHeader.classList.toggle('active');
+            resources.classList.toggle('active');
+        }
+        
+        // --- NOVA FUNÇÃO PARA MARCAR COMO CONCLUÍDO ---
+        function markAsCompleted(resourceId) {
+            // Salva o ID do recurso no localStorage
+            localStorage.setItem(resourceId, 'true');
+            // Aplica a classe 'completed' no cartão
+            applyCompletedStyle(resourceId);
+        }
+
+        function applyCompletedStyle(resourceId) {
+            const resourceCard = document.getElementById(resourceId);
+            if (resourceCard) {
+                resourceCard.classList.add('completed');
+                // Adiciona o ícone de check se ainda não existir
+                if (!resourceCard.querySelector('.check-mark')) {
+                    const checkIcon = document.createElement('i');
+                    checkIcon.className = 'fas fa-check-circle check-mark';
+                    resourceCard.appendChild(checkIcon);
+                }
+            }
+        }
+
+        function loadProgress() {
+            // Pega todos os IDs salvos no localStorage
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                // Verifica se o item no localStorage corresponde a um ID de recurso
+                if (document.getElementById(key)) {
+                    applyCompletedStyle(key);
+                }
+            }
+        }
+        
+        // Inicializa a página
+        window.onload = () => {
+            // Abre a Semana 01 por padrão
+            const week1Header = document.querySelector('#week-1').previousElementSibling;
+            const week1Resources = document.getElementById('week-1');
+            week1Header.classList.add('active');
+            week1Resources.classList.add('active');
+
+            // Carrega o progresso salvo do aluno
+            loadProgress();
+        };
+    </script>
 </body>
 </html>
