@@ -245,7 +245,7 @@
             cursor: not-allowed;
         }
 
-        /* --- ESTILOS PARA O ITEM CONCLUÍDO --- */
+        /* --- ESTILOS PARA O ITEM CONCLUÍDO (AJUSTADOS) --- */
         .resource-card.completed {
             background-color: var(--completed-bg);
             border-color: var(--completed-color);
@@ -255,12 +255,10 @@
         }
         .resource-card.completed a {
             background-color: var(--completed-color);
-            cursor: default;
-            pointer-events: none; /* Impede novos cliques */
+            cursor: pointer; /* ALTERADO: Indica que é clicável */
+            /* REMOVIDO: pointer-events: none; */
         }
-        .resource-card.completed a:hover {
-            transform: none;
-        }
+        /* REMOVIDO: .resource-card.completed a:hover { transform: none; } */
         .resource-card.completed .check-mark {
             position: absolute;
             top: 10px;
